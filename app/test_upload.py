@@ -47,6 +47,17 @@ class TestSortService(unittest.TestCase):
     def test_sort_by_actor(self):
         data_movies = self._manager_upload.upload('movies.json').get('movies')
         self.assertEqual(len(SortMovies()._sort_by_actor(data_movies)), 33)
+    
+    # method for test sort same movies 
+    def test_sort_by_same_movie(self):
+        data_movies = self._manager_upload.upload('movies.json').get('movies')
+        self.assertEqual(len(SortMovies()._sort_to_similar_movie(data_movies)), 14)
+    
+
+    # method for test none return in sort same movie
+    def test_sort_by_same_movie_not_none(self):
+        data_movies = self._manager_upload.upload('movies.json').get('movies')
+        self.assertIsNotNone(len(SortMovies()._sort_to_similar_movie(data_movies)))
 
 
 if __name__ == '__main__':

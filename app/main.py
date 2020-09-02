@@ -41,7 +41,11 @@ class Movie(SortMovies, ManagerData):
     def save_data_json(self):
         with open('result.json', 'w') as fp:
             json.dump(self.data_movies, fp, indent=4)
+    
 
+    # method to string for print data movies
+    def to_string(self, movie):
+            print("Titulo: {} calificacion: {} actors: {} genres: {} imdRating {}".format(movie.get('title'), movie.get('averageRating'), movie.get('actors'), movie.get('genres'), movie.get('imdbRating')))
 
 
 # funtion main for the test sort and upload files
@@ -60,8 +64,8 @@ if __name__ == "__main__":
     
     index = 0
     print("lista de reproduccion, pelicula actual")
-    print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
-    
+    movies.to_string(movies.data_movies[index])
+
     while True:
 
         if index == 0:
@@ -70,7 +74,7 @@ if __name__ == "__main__":
             option = int(input())
             if option == 1:
                 index +=1
-                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
+                movies.to_string(movies.data_movies[index])
                 
             elif option == 2:
                 break
@@ -84,10 +88,10 @@ if __name__ == "__main__":
             option = int(input())
             if option == 1:
                 index +=1
-                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
+                movies.to_string(movies.data_movies[index])
             elif option == 2:
                 index -=1
-                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))   
+                movies.to_string(movies.data_movies[index])   
             elif option == 3:
                 break
             else:
