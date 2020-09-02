@@ -1,53 +1,65 @@
 class SortMovies(object):
+    """ calss for manage sort funtionalitys
+    """
 
-
+    # methos for sort by average rating
     def _sort_to_average_rating(self):
-        pass
+        return self._merge_sort(self.data_movies.get('movies'))
 
 
+    # method for sort by similar movie
     def _sort_to_similar_movie(self):
-        pass
+        return []
 
 
+    # method for sort by same actor
     def _sort_to_same_actor(self):
-        pass
+        return []
 
 
-    def _merge_sort(self, lista):
-        if len(lista) < 2:
-            return self.data_movies
-        
-            # De lo contrario, se divide en 2
+    # merge sort methos for order data in sort average rating
+    def _merge_sort(self, data_movies):
+        if len(data_movies) >1: 
+            mid = len(data_movies)//2 # Finding the mid of the array 
+            L = data_movies[:mid] # Dividing the array elements  
+            R = data_movies[mid:] # into 2 halves 
+    
+            self._merge_sort(L) # Sorting the first half 
+            self._merge_sort(R) # Sorting the second half 
+    
+            i = j = k = 0
+            
+            # Copy data to temp arrays L[] and R[] 
+            while i < len(L) and j < len(R): 
+                if L[i].get('averageRating') < R[j].get('averageRating'): 
+                    data_movies[k] = L[i] 
+                    i+= 1
+                else: 
+                    data_movies[k] = R[j] 
+                    j+= 1
+                k+= 1
+            
+            # Checking if any element was left 
+            while i < len(L): 
+                data_movies[k] = L[i]
+                i+= 1
+                k+= 1
+            
+            while j < len(R): 
+                data_movies[k] = R[j] 
+                j+= 1
+                k+= 1
+            return data_movies
         else:
-            middle = len(lista) // 2
-            right = self._merge_sort(lista[:middle])
-            left = self._merge_sort(lista[middle:])
-            return self._merge(right, left)
+            return data_movies
     
 
-    def _merge(self, lista1, lista2):
-        i, j = 0, 0 # Variables de incremento
-        result = [] # Lista de resultado
-
-        # Intercalar ordenadamente
-        while(i < len(lista1) and j < len(lista2)):
-            if (lista1[i] < lista2[j]):
-                result.append(lista1[i])
-                i += 1
-            else:
-                result.append(lista2[j])
-                j += 1
-
-        # Agregamos los resultados a la lista
-            result += lista1[i:]
-            result += lista2[j:]
-
-            # Retornamos el resultados
-            return result
-
-
-
-    def sort_to_average(self, option_sort):
-        print(option_sort)
-        self.data_movies = self._merge_sort(option_sort)
-        import pdb; pdb.set_trace()
+    # methos main for execute each option sort
+    def sort_data(self, option_sort):
+        if option_sort == 1:
+            self.data_movies = self._sort_to_average_rating()
+            self.data_movies = self.data_movies[::-1]
+        elif option_sort == 2:
+            self.data_movies = self._sort_to_similar_movie()
+        elif option_sort == 3:
+            self.data_movies = self._sort_to_same_actor()

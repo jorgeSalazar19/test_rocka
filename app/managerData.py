@@ -2,7 +2,8 @@
 import json
 
 class ManagerData(object):
-    
+    """ class for manager the data movies upload
+    """
 
     # constructor
     def __init__(self, path_data):
