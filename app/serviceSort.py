@@ -30,10 +30,7 @@ class SortMovies(object):
             if data_movies[index].get('title') not in list_tmp_titles_movies:
                 list_result.append(data_movies[index])
                 list_tmp_titles_movies.append(data_movies[index].get('title'))
-        print(list_tmp_titles_movies, len(list_tmp_titles_movies))
         return list_result
-
-
 
 
     # merge sort methos for order data in sort average rating
