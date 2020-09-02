@@ -60,7 +60,7 @@ if __name__ == "__main__":
     
     index = 0
     print("lista de reproduccion, pelicula actual")
-    print("Titulo: {} calificacion: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating')))
+    print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
     
     while True:
 
@@ -70,7 +70,8 @@ if __name__ == "__main__":
             option = int(input())
             if option == 1:
                 index +=1
-                print("Titulo: {} calificacion: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating')))
+                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
+                
             elif option == 2:
                 break
             else:
@@ -83,10 +84,10 @@ if __name__ == "__main__":
             option = int(input())
             if option == 1:
                 index +=1
-                print("Titulo: {} calificacion: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating')))
+                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))
             elif option == 2:
                 index -=1
-                print("Titulo: {} calificacion: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating')))
+                print("Titulo: {} calificacion: {} actors: {}".format(movies.data_movies[index].get('title'), movies.data_movies[index].get('averageRating'), movies.data_movies[index].get('actors')))   
             elif option == 3:
                 break
             else:
